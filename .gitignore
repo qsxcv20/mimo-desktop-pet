@@ -1,0 +1,38 @@
+# ---- runtime state (never commit) ----
+pet/pet_status.json
+pet/pet_cmd.json
+pet/pet_config.json
+pet/egg_state.json
+pet/pet_disabled
+pet/launcher.log
+pet/pet_watchdog.log
+pet/selftest/
+**/pet_cmd.json.tmp
+
+# ---- credentials: MUST NOT be committed ----
+pet/quota_cred.json
+*.pem
+*.key
+
+# ---- third-party reference material (调研用，版权不明，不分发) ----
+_reference/
+
+# ---- local evidence / scratch ----
+_mimo/
+build/_tmp/
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# ---- one-off patch helpers ----
+tools/_p_*.py
+
+# ---- local GitHub token (never commit) ----
+.gh_token
+
+# ---- OS / editor ----
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

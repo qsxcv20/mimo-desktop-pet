@@ -1,0 +1,38 @@
+{
+  "id": "mimo-witch",
+  "name": "MiMo 巫女兔",
+  "description": "橙白双马尾女巫帽兔耳少女 · MiMo 桌面伙伴",
+  "version": 1,
+  "spritesheet": "spritesheet.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 24,
+  "totalFrames": 96,
+  "anchorX": 0.5,
+  "animations": {
+    "idle": {
+      "row": 0,
+      "frames": 24,
+      "fps": 8,
+      "loop": true
+    },
+    "happy": {
+      "row": 1,
+      "frames": 24,
+      "fps": 12,
+      "loop": true
+    },
+    "think": {
+      "row": 2,
+      "frames": 24,
+      "fps": 6,
+      "loop": true
+    },
+    "tired": {
+      "row": 3,
+      "frames": 24,
+      "fps": 5,
+      "loop": true
+    }
+  }
+}
