@@ -32,6 +32,10 @@ def api(path, method="GET", body=None, raw=None):
             txt = e.read().decode("utf-8", "replace")[:300]
             if e.code in (502, 503, 504) and attempt < 3:
                 time.sleep(2 * (attempt + 1)); continue
+            if e.code == 403 and "rate limit" in txt.lower() and attempt < 5:
+                wait = 20 * (attempt + 1)
+                print("  rate limited -> wait %ds" % wait)
+                time.sleep(wait); continue
             return e.code, txt
         except Exception as e:
             if attempt < 3:
@@ -80,10 +84,17 @@ def worker(rel):
     return {"path": rel, "mode": "100644", "type": "blob", "sha": sha}
 
 t0 = time.time()
-with concurrent.futures.ThreadPoolExecutor(max_workers=8) as ex:
+with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex:
     entries = list(ex.map(worker, files))
 print("blobs done in %.1fs" % (time.time() - t0))
 
+# files deleted locally must be marked with sha=null, otherwise base_tree keeps them
+st, bt = api("/repos/%s/%s/git/trees/%s" % (OWNER, REPO, base_tree))
+if st == 200:
+    existing = set(e["path"] for e in bt.get("tree", []) if e.get("type") == "blob")
+    for gone in sorted(existing - set(files)):
+        entries.append({"path": gone, "mode": "100644", "type": "blob", "sha": None})
+        print("  mark deleted:", gone)
 st, tree = api("/repos/%s/%s/git/trees" % (OWNER, REPO), "POST",
                {"tree": entries, "base_tree": base_tree})
 print("create tree ->", st)
