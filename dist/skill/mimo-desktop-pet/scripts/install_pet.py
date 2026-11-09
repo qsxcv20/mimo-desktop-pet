@@ -31,7 +31,7 @@ try:
 except Exception:
     pass
 
-DEFAULT_REPO = "https://codeload.github.com/OWNER/mimo-desktop-pet/zip/refs/heads/main"
+DEFAULT_REPO = "https://codeload.github.com/qsxcv20/mimo-desktop-pet/zip/refs/heads/main"
 DEFAULT_DEST = os.path.join(os.environ.get("LOCALAPPDATA", os.path.expanduser("~")),
                            "MiMoDesktopPet")
 

@@ -1,6 +1,6 @@
 ﻿# MiMo 桌面宠物 —— 一键安装（PowerShell）
 # 用法：
-#   irm https://raw.githubusercontent.com/OWNER/mimo-desktop-pet/main/dist/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/qsxcv20/mimo-desktop-pet/main/dist/install.ps1 | iex
 #
 # 会做三件事：
 #   1. 下载仓库 zip（不需要 git）
@@ -9,7 +9,7 @@
 
 $ErrorActionPreference = 'Stop'
 
-$repo = 'OWNER/mimo-desktop-pet'
+$repo = 'qsxcv20/mimo-desktop-pet'
 $zip  = Join-Path $env:TEMP 'mimo-desktop-pet.zip'
 $work = Join-Path $env:TEMP 'mimo-desktop-pet-install'
 

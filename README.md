@@ -31,15 +31,15 @@ MiMo 的技能会带你看安装流程。
 ### 方式二：一条命令
 
 ```powershell
-irm https://raw.githubusercontent.com/OWNER/mimo-desktop-pet/main/dist/install.ps1 | iex
+irm https://raw.githubusercontent.com/qsxcv20/mimo-desktop-pet/main/dist/install.ps1 | iex
 ```
 
-（把 `OWNER` 换成仓库拥有者的用户名。）
+（仓库地址已填好，直接用即可；如果要装别人 fork 的版本，把 `qsxcv20` 换成对应用户名。）
 
 ### 方式三：手动
 
 ```powershell
-git clone https://github.com/OWNER/mimo-desktop-pet.git
+git clone https://github.com/qsxcv20/mimo-desktop-pet.git
 cd mimo-desktop-pet
 pip install PySide6 pywin32 psutil websocket-client Pillow
 python dist\skill\mimo-desktop-pet\scripts\install_pet.py --source .
